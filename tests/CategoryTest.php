@@ -112,7 +112,6 @@
             //Assert
             $this->assertEquals($test_Category, $result);
         }
-
     }
 
 ?>
