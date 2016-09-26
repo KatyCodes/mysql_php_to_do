@@ -38,11 +38,6 @@
            $this->setName($new_name);
        }
 
-       function delete()
-       {
-           $GLOBALS['DB']->exec("DELETE FROM categories WHERE id = {$this->getId()};");
-       }
-
        function addTask($task)
        {
            $GLOBALS['DB']->exec("INSERT INTO categories_tasks (category_id, task_id) VALUES ({$this->getId()}, {$task->getId()});");
@@ -96,6 +91,12 @@
                 }
             }
             return $found_category;
+        }
+
+        function delete()
+        {
+            $GLOBALS['DB']->exec("DELETE FROM categories WHERE id = {$this->getId()};");
+            $GLOBALS['DB']->exec("DELETE FROM categories_tasks WHERE category_id = {$this->getId()};");
         }
 
 
